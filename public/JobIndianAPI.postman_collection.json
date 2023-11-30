@@ -1,0 +1,755 @@
+{
+	"info": {
+		"_postman_id": "b4f9e00e-7a16-4571-b2c3-a93654823905",
+		"name": "JobIndian API",
+		"description": "JobIndian API is a backend RESTful API that is build in NODE.js",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12215109"
+	},
+	"item": [
+		{
+			"name": "jobs",
+			"item": [
+				{
+					"name": "Get all jobs",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"connection": true,
+							"accept-encoding": true,
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n       \"title\": \"Node Developer\",\n        \"description\": \"Must be a full-stack developer, able to implement everything in a MEAN or MERN stack paradigm (MongoDB, Express, Angular and/or React, and Node.js).\",\n        \"email\": \"employeer1@gmail.com\",\n        \"address\": \"651 Rr 2, Oquawka, IL, 61469\",\n        \"company\": \"Knack Ltd\",\n        \"industry\": [\n            \"Information Technology\"\n        ],\n        \"jobType\": \"Permanent\",\n        \"minEducation\": \"Bachelors\",\n        \"positions\": 2,\n        \"experience\": \"2 Years - 5 Years\",\n        \"salary\": \"155000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/jobs",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"jobs"
+							]
+						},
+						"description": "Get all jobs that are store in Database"
+					},
+					"response": []
+				},
+				{
+					"name": "Create new job",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"connection": true,
+							"accept-encoding": true,
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NWM3OTAwOTNiNzJhMzVkMmMzMjhiMiIsImlhdCI6MTcwMDU3MTEwMCwiZXhwIjoxNzAxMTc1OTAwfQ.Nvps3ObtyTFrMUbaFMXOdGhyagU8lH5OWQZTqpplW6I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n       \"title\": \"JS trainy Developer\",\n        \"description\": \"NOT full-stack developer, able to implement everything in a MEAN or MERN stack paradigm (MongoDB, Express, Angular and/or React, and Node.js).\",\n        \"email\": \"employeer2@gmail.com\",\n        \"address\": \"24 Olimpic Dr, Stafford, VA, 22554\",\n        \"company\": \"Star Tech\",\n        \"industry\": [\n            \"Information Technology\"\n        ],\n        \"jobType\": \"Permanent\",\n        \"minEducation\": \"Masters\",\n        \"positions\": 20,\n        \"experience\": \"2 Years - 5 Years\",\n        \"salary\": \"25000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/job/new",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"job",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get jobs with in Radius/Distance",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/jobs/22554-7763/55000",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"jobs",
+								"22554-7763",
+								"55000"
+							]
+						},
+						"description": "Get all jobs with specific distance or radius by providing zip code"
+					},
+					"response": []
+				},
+				{
+					"name": "Update job by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"+QoQ senior Developer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/job/6567726f172c61f115535d88",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"job",
+								"6567726f172c61f115535d88"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete job by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/job/655ddc7a818c174454a1311a",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"job",
+								"655ddc7a818c174454a1311a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get job by ID and slug",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/job/65677033b15d2afea7b2df45/v+-trainy-developer",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"job",
+								"65677033b15d2afea7b2df45",
+								"v+-trainy-developer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Topic Stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/stats/node",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"stats",
+								"node"
+							]
+						},
+						"description": "Gives stats about a topic"
+					},
+					"response": []
+				},
+				{
+					"name": "Apply to job with Resume",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "File",
+									"type": "file",
+									"src": "Primary Maths Workshop Yr 3-6.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/job/655dd5440e4d37a1a1fd69e7/apply",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"job",
+								"655dd5440e4d37a1a1fd69e7",
+								"apply"
+							]
+						},
+						"description": "Apply to any by uploading resume"
+					},
+					"response": []
+				}
+			],
+			"description": "All Requests related to jobs. Like: Create , Read, Update, Delete, Apply to job etc"
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register-Sign In user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"name\": \"Shokovskyj Ievgen\",\n    \"email\": \"most@gmail.com\",\n    \"password\": \"Sigmasoft\",\n    \"role\": \"employer\"\n}"
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/register",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"register"
+							]
+						},
+						"description": "register user"
+					},
+					"response": []
+				},
+				{
+					"name": "Login user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"token\", pm.response.json().token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"tomEmployer@gmail.com\",\n    // \"email\": {\"$gt\": \"\"},\n    \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/login",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						},
+						"description": "login user"
+					},
+					"response": []
+				},
+				{
+					"name": "forgot password Send Link to recovery ",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"email\":\"sam+10@gmail.com\"\n}"
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/password/forgot",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"password",
+								"forgot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset new password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/password/reset/811b026f789bd90a4ea1bf5f57992176bcfbb1dc",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"password",
+								"reset",
+								"811b026f789bd90a4ea1bf5f57992176bcfbb1dc"
+							]
+						},
+						"description": "of that account by link"
+					},
+					"response": []
+				},
+				{
+					"name": "logout clear token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"token\", pm.response.json().token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/logout",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "All routs realated to authentication like: register a new user, login in user, password reset etc"
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get current user profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/me",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"me"
+							]
+						},
+						"description": "gives data of current logged in user"
+					},
+					"response": []
+				},
+				{
+					"name": "Change Current User password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"currentPassword\": \"password!1\",\n    \"newPassword\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/password/update",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"password",
+								"update"
+							]
+						},
+						"description": "Change the currently in user password"
+					},
+					"response": []
+				},
+				{
+					"name": "Update current user data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sam\",\n    \"email\":\"sam+11@gmail.com\"\n}"
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/me/update",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"me",
+								"update"
+							]
+						},
+						"description": "Update current user data : email , name"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete current user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/me/delete",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"me",
+								"delete"
+							]
+						},
+						"description": "Delete currently logged in user from that database with it's files"
+					},
+					"response": []
+				},
+				{
+					"name": "Show all jobs applied by user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/jobs/applied",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"jobs",
+								"applied"
+							]
+						},
+						"description": "Show all the jobs in which the currently logged in user has applied"
+					},
+					"response": []
+				},
+				{
+					"name": "get jobs published by employer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/jobs/published",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"jobs",
+								"published"
+							]
+						},
+						"description": "get all jobs that are created by current logged in employer"
+					},
+					"response": []
+				},
+				{
+					"name": "Show all users for Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/users",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user by Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/api/v1/user/655b86243fd17c3f42e5df36",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"655b86243fd17c3f42e5df36"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "All routes realated to User"
+		}
+	]
+}
